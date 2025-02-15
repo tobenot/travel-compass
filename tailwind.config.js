@@ -57,6 +57,8 @@ module.exports = {
       animation: {
         'slide-up': 'slideUp 0.5s ease-out forwards',
         'fade-in': 'fadeIn 0.5s ease-out forwards',
+        'float': 'float 6s ease-in-out infinite',
+        'glow': 'glow 2s ease-in-out infinite',
       },
       keyframes: {
         slideUp: {
@@ -66,6 +68,20 @@ module.exports = {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0) translateX(0)' },
+          '50%': { transform: 'translateY(-10px) translateX(5px)' },
+        },
+        glow: {
+          '0%, 100%': { 
+            'box-shadow': '0 0 20px 10px rgba(255,255,255,0.1)',
+            'border-color': 'rgba(255,255,255,0.2)'
+          },
+          '50%': { 
+            'box-shadow': '0 0 30px 15px rgba(255,255,255,0.2)',
+            'border-color': 'rgba(255,255,255,0.4)'
+          },
         },
       },
     },
