@@ -3,7 +3,7 @@
     <!-- 背景图层 -->
     <div class="fixed inset-0 z-0">
       <img 
-        src="/images/sea.png" 
+        src="./images/sea.png" 
         alt="" 
         class="w-full h-full object-cover opacity-70 dark:opacity-40"
       />
@@ -27,7 +27,7 @@
                       dark:shadow-[0_0_15px_rgba(255,255,255,0.1)]
                       bg-white/5 backdrop-blur-sm">
             <img 
-              :src="`/images/portrait${randomNum}.png`" 
+              :src="`./images/portrait${randomNum}.png`" 
               alt="" 
               class="w-[256px] h-[384px] object-contain"
             />
