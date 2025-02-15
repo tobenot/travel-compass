@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 主圆形背景 -->
+  <circle cx="32" cy="32" r="32" fill="#3B82F6" />
+  
+  <!-- 内部白色圆环 -->
+  <circle cx="32" cy="32" r="28" fill="none" stroke="#F9FAFB" stroke-width="1" />
+  <circle cx="32" cy="32" r="24" fill="none" stroke="#F9FAFB" stroke-width="0.5" />
+  
+  <!-- 指针 -->
+  <g transform="translate(32,32)">
+    <!-- 北方向指针 -->
+    <polygon points="0,-20 -4,-12 0,-14 4,-12" fill="#EF4444" />
+    <!-- 南方向指针 -->
+    <polygon points="0,20 -4,12 0,14 4,12" fill="#F9FAFB" />
+    <!-- 东西方向指针 -->
+    <polygon points="20,0 12,-4 14,0 12,4" fill="#F9FAFB" />
+    <polygon points="-20,0 -12,-4 -14,0 -12,4" fill="#F9FAFB" />
+  </g>
+  
+  <!-- 方向标记 -->
+  <text x="32" y="16" fill="#F9FAFB" font-size="6" text-anchor="middle" font-family="Arial">N</text>
+  <text x="32" y="52" fill="#F9FAFB" font-size="6" text-anchor="middle" font-family="Arial">S</text>
+  <text x="52" y="34" fill="#F9FAFB" font-size="6" text-anchor="middle" font-family="Arial">E</text>
+  <text x="12" y="34" fill="#F9FAFB" font-size="6" text-anchor="middle" font-family="Arial">W</text>
+</svg> 
