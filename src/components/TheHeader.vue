@@ -8,8 +8,10 @@
         </div>
         
         <div class="relative w-full max-w-2xl ml-4">
-          <div class="flex items-center bg-gray-50 dark:bg-dark-500 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
-            <span class="pl-4 text-gray-400">
+          <div class="flex items-center bg-white dark:bg-dark-500 rounded-2xl shadow-lg hover:shadow-xl 
+                      transition-all duration-300 border border-gray-100 dark:border-dark-400
+                      backdrop-blur-lg bg-opacity-80 dark:bg-opacity-80">
+            <span class="pl-4 text-primary-400">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
@@ -19,26 +21,31 @@
               type="search"
               v-model="searchQuery"
               placeholder="搜索导航或直接搜索..."
-              class="w-full px-3 py-3 bg-transparent focus:outline-none text-gray-700 dark:text-gray-200"
+              class="w-full px-3 py-4 bg-transparent focus:outline-none text-gray-700 dark:text-gray-200
+                     placeholder-gray-400 dark:placeholder-gray-500"
               @input="handleSearch"
             />
             
-            <div class="flex items-center space-x-1 pr-2">
+            <div class="flex items-center space-x-2 pr-3">
               <button
                 @click="handleGoogleSearch"
-                class="flex items-center px-3 py-1.5 rounded-lg text-sm font-medium transition-colors duration-200
-                       bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white"
+                class="flex items-center px-4 py-2 rounded-xl text-sm font-medium
+                       transition-all duration-300 transform hover:scale-105
+                       bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 
+                       text-white shadow-md hover:shadow-lg"
               >
-                <img src="https://www.google.com/favicon.ico" class="w-4 h-4 mr-1" alt="Google" />
+                <img src="https://www.google.com/favicon.ico" class="w-4 h-4 mr-1.5 filter dark:brightness-110" alt="Google" />
                 搜索
               </button>
               
               <button
                 @click="handleBaiduSearch"
-                class="flex items-center px-3 py-1.5 rounded-lg text-sm font-medium transition-colors duration-200
-                       bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white"
+                class="flex items-center px-4 py-2 rounded-xl text-sm font-medium
+                       transition-all duration-300 transform hover:scale-105
+                       bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 
+                       text-white shadow-md hover:shadow-lg"
               >
-                <img src="https://www.baidu.com/favicon.ico" class="w-4 h-4 mr-1" alt="Baidu" />
+                <img src="https://www.baidu.com/favicon.ico" class="w-4 h-4 mr-1.5 filter dark:brightness-110" alt="Baidu" />
                 搜索
               </button>
             </div>
