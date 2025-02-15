@@ -1,17 +1,5 @@
 export const navigationData = [
   {
-    
-    title: '主心骨',
-    items: [
-      {
-        title: 'Google',
-        description: '搜索一下，你就知道',
-        link: 'https://google.com',
-        icon: '/icons/google.svg'
-      },
-    ]
-  },
-  {
     title: '听歌看片',
     items: [
       {
