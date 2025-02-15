@@ -16,13 +16,20 @@
     <div class="flex items-center space-x-3">
       <div class="shrink-0 relative">
         <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-50 dark:from-dark-500 dark:to-dark-600 rounded-lg"></div>
-        <img 
-          :src="`https://www.google.com/s2/favicons?domain=${encodeURIComponent(link)}&sz=128`"
-          :alt="title" 
-          class="relative w-10 h-10 rounded-lg object-cover"
-          loading="lazy"
-          @error="handleImageError"
-        />
+        <template v-if="icon">
+          <span class="relative w-10 h-10 flex items-center justify-center text-xl">
+            {{ icon }}
+          </span>
+        </template>
+        <template v-else>
+          <img 
+            :src="`https://www.google.com/s2/favicons?domain=${encodeURIComponent(link)}&sz=128`"
+            :alt="title" 
+            class="relative w-10 h-10 rounded-lg object-cover"
+            loading="lazy"
+            @error="handleImageError"
+          />
+        </template>
       </div>
       <div class="min-w-0">
         <h3 class="font-medium text-gray-900 dark:text-gray-100 truncate">{{ title }}</h3>
