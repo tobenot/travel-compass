@@ -59,9 +59,9 @@ import CategorySection from './components/CategorySection.vue'
 
 // 定义可选的图片数组
 const portraitImages = [
-  '/images/portrait1.png',
-  '/images/portrait2.png',
-  '/images/portrait3.png'
+  './images/portrait1.png',
+  './images/portrait2.png',
+  './images/portrait3.png'
 ]
 
 // 随机选择一个图片
