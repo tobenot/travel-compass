@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <!-- 主圆形背景 -->
-  <circle cx="32" cy="32" r="32" fill="#3B82F6" />
+  <circle cx="32" cy="32" r="32" fill="#8b5cf6" />
   
-  <!-- 内部白色圆环 -->
-  <circle cx="32" cy="32" r="28" fill="none" stroke="#F9FAFB" stroke-width="1" />
-  <circle cx="32" cy="32" r="24" fill="none" stroke="#F9FAFB" stroke-width="0.5" />
+  <!-- 内部装饰圆环 - 减少到一个，加粗 -->
+  <circle cx="32" cy="32" r="26" fill="none" stroke="#dba520" stroke-width="2" opacity="0.8" />
   
-  <!-- 指针 -->
+  <!-- 指针组 - 放大并简化 -->
   <g transform="translate(32,32)">
-    <!-- 北方向指针 -->
-    <polygon points="0,-20 -4,-12 0,-14 4,-12" fill="#EF4444" />
-    <!-- 南方向指针 -->
-    <polygon points="0,20 -4,12 0,14 4,12" fill="#F9FAFB" />
-    <!-- 东西方向指针 -->
-    <polygon points="20,0 12,-4 14,0 12,4" fill="#F9FAFB" />
-    <polygon points="-20,0 -12,-4 -14,0 -12,4" fill="#F9FAFB" />
+    <!-- 北指针(金色) - 更粗更大 -->
+    <path d="M0,-20 L6,-6 L0,-9 L-6,-6 Z" 
+          fill="#dba520"
+          stroke="#dba520"
+          stroke-width="1"
+    />
+    <!-- 南指针(浅金色) - 更粗更大 -->
+    <path d="M0,20 L6,6 L0,9 L-6,6 Z" 
+          fill="#f5d675"
+          stroke="#f5d675"
+          stroke-width="1"
+    />
+  </g>
+  
+  <!-- 中心圆点 - 放大 -->
+  <circle cx="32" cy="32" r="3" fill="#dba520" />
+  
+  <!-- 四个主要刻度 - 加粗加长 -->
+  <g transform="translate(32,32)" stroke="#dba520" stroke-width="2" opacity="0.8">
+    <line x1="0" y1="-26" x2="0" y2="-22" />
+    <line x1="0" y1="26" x2="0" y2="22" />
+    <line x1="-26" y1="0" x2="-22" y2="0" />
+    <line x1="26" y1="0" x2="22" y2="0" />
   </g>
   
   <!-- 方向标记 -->
-  <text x="32" y="16" fill="#F9FAFB" font-size="6" text-anchor="middle" font-family="Arial">N</text>
-  <text x="32" y="52" fill="#F9FAFB" font-size="6" text-anchor="middle" font-family="Arial">S</text>
-  <text x="52" y="34" fill="#F9FAFB" font-size="6" text-anchor="middle" font-family="Arial">E</text>
-  <text x="12" y="34" fill="#F9FAFB" font-size="6" text-anchor="middle" font-family="Arial">W</text>
+  <text x="32" y="16" fill="#dba520" font-size="6" text-anchor="middle" font-family="Arial" font-weight="bold">N</text>
+  <text x="32" y="52" fill="#f5d675" font-size="6" text-anchor="middle" font-family="Arial">S</text>
 </svg> 
