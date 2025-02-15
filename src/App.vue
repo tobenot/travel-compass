@@ -27,7 +27,7 @@
                       dark:shadow-[0_0_15px_rgba(255,255,255,0.1)]
                       bg-white/5 backdrop-blur-sm">
             <img 
-              :src="`./images/portrait${randomNum}.png`" 
+              :src="randomImage" 
               alt="" 
               class="w-[256px] h-[384px] object-contain"
             />
@@ -53,10 +53,19 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import TheHeader from './components/TheHeader.vue'
 import CategorySection from './components/CategorySection.vue'
 
-// 生成1-5的随机数
-const randomNum = ref(Math.floor(Math.random() * 3) + 1)
+// 定义可选的图片数组
+const portraitImages = [
+  './images/portrait1.png',
+  './images/portrait2.png',
+  './images/portrait3.png'
+]
+
+// 随机选择一个图片
+const randomImage = computed(() => {
+  return portraitImages[Math.floor(Math.random() * portraitImages.length)]
+})
 </script> 

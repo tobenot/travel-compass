@@ -27,11 +27,6 @@ export const navigationData = [
         title: '生成音乐',
         description: '每天白嫖5首AI音乐',
         link: 'https://suno.com/create'
-      },
-      {
-        title: 'CodePen',
-        description: '写点代码玩玩',
-        link: 'https://codepen.io'
       }
     ]
   },
