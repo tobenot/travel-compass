@@ -20,7 +20,7 @@ export const navigationData = [
     items: [
       {
         title: 'Vidu AI',
-        description: '图片生成视频，现在我是会员所以随便用',
+        description: '图片生成视频',
         link: 'https://www.vidu.cn/create/character2video'
       },
       {
@@ -55,7 +55,7 @@ export const navigationData = [
       },
       {
         title: 'Vidu AI',
-        description: '图片生成视频，现在我是会员所以随便用',
+        description: '图片生成视频',
         link: 'https://www.vidu.cn/create/character2video'
       },
       {
