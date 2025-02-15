@@ -1,52 +1,64 @@
 export const navigationData = [
   {
-    title: '常用工具',
+    
+    title: '主心骨',
     items: [
-      {
-        title: 'GitHub',
-        description: '全球最大的代码托管平台',
-        link: 'https://github.com',
-        icon: '/icons/github.svg'
-      },
       {
         title: 'Google',
-        description: '全球最大的搜索引擎',
+        description: '搜索一下，你就知道',
         link: 'https://google.com',
         icon: '/icons/google.svg'
-      }
+      },
     ]
   },
   {
-    title: '学习资源',
+    title: '听歌看片',
     items: [
       {
-        title: 'MDN',
-        description: 'Mozilla 开发者网络',
-        link: 'https://developer.mozilla.org',
-        icon: '/icons/mdn.svg'
+        title: '我的歌单',
+        description: '收藏的歌曲都在这儿',
+        link: 'https://space.bilibili.com/23122362/favlist?fid=1053816862',
+        icon: '/icons/music.svg'
       },
       {
-        title: 'Vue.js',
-        description: '渐进式 JavaScript 框架',
-        link: 'https://vuejs.org',
-        icon: '/icons/vue.svg'
+        title: '相白质黑',
+        description: '最近单曲循环中...',
+        link: 'https://www.bilibili.com/video/BV1WD4y1x7ia/',
+        icon: '/icons/video.svg'
       }
     ]
   },
   {
-    title: '开发工具',
+    title: '白嫖薅羊毛区',
     items: [
       {
-        title: 'VS Code',
-        description: '强大的代码编辑器',
-        link: 'https://code.visualstudio.com',
-        icon: '/icons/vscode.svg'
+        title: 'Vidu AI',
+        description: '图片生成视频，现在我是会员所以随便用',
+        link: 'https://www.vidu.cn/create/character2video',
+        icon: '/icons/video.svg'
+      },
+      {
+        title: '生成音乐',
+        description: '每天白嫖5首AI音乐',
+        link: 'https://suno.com/create',
+        icon: '/icons/music.svg'
       },
       {
         title: 'CodePen',
-        description: '在线代码编辑与分享平台',
+        description: '写点代码玩玩',
         link: 'https://codepen.io',
         icon: '/icons/codepen.svg'
+      }
+    ]
+  },
+  {
+    title: '存点东西',
+    items: [
+      {
+        title: '坚果云',
+        description: '同步文件必备',
+        link: 'https://www.jianguoyun.com',
+        icon: '/icons/cloud.svg'
       }
     ]
   }
