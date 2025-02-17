@@ -48,6 +48,9 @@
           <p>© {{ new Date().getFullYear() }} 旅路罗盘. All rights reserved.</p>
         </div>
       </footer>
+
+      <!-- ISS Tracker -->
+      <ISSTracker />
     </div>
   </div>
 </template>
@@ -56,6 +59,7 @@
 import { ref, computed } from 'vue'
 import TheHeader from './components/TheHeader.vue'
 import CategorySection from './components/CategorySection.vue'
+import ISSTracker from './components/ISSTracker.vue'
 
 // 定义可选的图片数组
 const portraitImages = [
