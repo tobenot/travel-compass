@@ -74,5 +74,16 @@ export const navigationData = [
         link: 'https://www.abandonedcodex.net/index.php'
       }
     ]
+  },
+  {
+    title: '日历',
+    items: [
+      {
+        title: '日历',
+        description: '百度搜索日历',
+        link: 'https://www.baidu.com/s?wd=%E6%97%A5%E5%8E%86',
+        icon: '🗓'
+      }
+    ]
   }
 ] 
