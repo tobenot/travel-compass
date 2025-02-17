@@ -10,6 +10,7 @@
               overflow-hidden"
        @mouseenter="stopAnimation"
        @mouseleave="startAnimation"
+       @click="toggleLinks"
        :style="{ animation: isAnimationPaused ? 'none' : 'float 6s ease-in-out infinite' }">
     
     <!-- 装饰性舱窗 -->
@@ -49,12 +50,37 @@
           <span class="font-medium">速度:</span>
           <span class="font-mono">{{ (issData.velocity).toFixed(2) }} km/h</span>
         </p>
+        <p class="text-sm text-gray-600 dark:text-blue-100/90 flex justify-between">
+          <span class="font-medium">所在区域:</span>
+          <span class="font-mono">{{ region.location }}</span>
+        </p>
       </div>
       
       <!-- 更新时间 -->
       <p class="text-xs text-gray-500 dark:text-blue-200/60 mt-3 text-right font-mono">
         更新时间: {{ new Date(issData.timestamp * 1000).toLocaleString() }}
       </p>
+      
+      <!-- 新增：点击时显示链接 -->
+      <div v-if="showLinks" class="mt-2 p-2 bg-white/50 dark:bg-slate-900/50 rounded-lg border border-blue-100 dark:border-blue-500/20">
+        <ul class="space-y-1">
+          <li>
+            <a href="https://www.youtube.com/watch?v=OCem0E-0Q6Y" target="_blank" class="text-blue-500 hover:underline">
+              空间站直播
+            </a>
+          </li>
+          <li>
+            <a href="https://zh.wikipedia.org/wiki/国际空间站" target="_blank" class="text-blue-500 hover:underline">
+              国际空间站 - 维基百科
+            </a>
+          </li>
+          <li>
+            <a href="https://www.nasa.gov/international-space-station/" target="_blank" class="text-blue-500 hover:underline">
+              NASA 国际空间站
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
     <div v-else class="text-sm text-gray-500 dark:text-blue-100/60 animate-pulse">
       正在建立连接...
@@ -63,10 +89,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 const issData = ref(null)
 const isAnimationPaused = ref(false)
+const showLinks = ref(false)
 let timer = null
 
 const fetchISSPosition = async () => {
@@ -85,6 +112,77 @@ const stopAnimation = () => {
 const startAnimation = () => {
   isAnimationPaused.value = false
 }
+
+const toggleLinks = () => {
+  showLinks.value = !showLinks.value
+}
+
+// 新增：根据经纬度简单判断半球以及所在区域（大陆或海洋）和详细位置（粗略估计）
+const region = computed(() => {
+  if (!issData.value) return { hemispheres: '未知', location: '未知位置' }
+  const { latitude, longitude } = issData.value;
+  
+  // 判断半球
+  const hemispheresArr = [];
+  hemispheresArr.push(latitude >= 0 ? '北半球' : '南半球');
+  hemispheresArr.push(longitude >= 0 ? '东半球' : '西半球');
+  const hemispheres = hemispheresArr.join(' ');
+  
+  let areaType = '', areaName = '', areaDetail = '';
+  
+  // 判断大陆区域（粗略）
+  if (latitude >= 15 && latitude <= 70 && longitude >= -30 && longitude <= 60) {
+    areaType = '大陆';
+    areaName = '欧洲';
+    areaDetail = longitude < 15 ? '西部' : '东部';
+  } else if (latitude >= 10 && latitude <= 70 && longitude < -30) {
+    areaType = '大陆';
+    areaName = '北美洲';
+    areaDetail = longitude < -100 ? '西部' : '东部';
+  } else if (latitude < 15 && longitude < -30) {
+    areaType = '大陆';
+    areaName = '南美洲';
+    areaDetail = longitude < -60 ? '西部' : '东部';
+  } else if (latitude >= -35 && latitude <= 40 && longitude >= -20 && longitude <= 55) {
+    areaType = '大陆';
+    areaName = '非洲';
+    areaDetail = longitude < 15 ? '西部' : '东部';
+  } else if (latitude >= 10 && longitude >= 55 && longitude <= 180) {
+    areaType = '大陆';
+    areaName = '亚洲';
+    areaDetail = longitude < 100 ? '西部' : '东部';
+  } else if (latitude < 0 && (longitude > 110 || longitude < -110)) {
+    areaType = '大陆';
+    areaName = '大洋洲';
+    areaDetail = longitude < 150 ? '西部' : '东部';
+  } else {
+    // 未匹配到大陆，则归为海洋，并判断海洋类型和区域（仅为粗略估计）
+    areaType = '海洋';
+    if (latitude > 66) {
+      areaName = '北冰洋';
+    } else if (latitude < -60) {
+      areaName = '南冰洋';
+    } else if (longitude >= -70 && longitude <= 20) {
+      areaName = '大西洋';
+      areaDetail = longitude < -25 ? '西部' : '东部';
+    } else if (longitude > 20 && longitude < 120) {
+      areaName = '印度洋';
+      areaDetail = longitude < 80 ? '西部' : '东部';
+    } else {
+      areaName = '太平洋';
+      if (longitude >= 120 || longitude <= -70) {
+        areaDetail = (longitude >= 120) ? '东部' : '西部';
+      }
+    }
+  }
+  
+  const location = areaDetail ? `${areaName}（${areaDetail}）` : areaName;
+  
+  return {
+    hemispheres,
+    location
+  };
+})
 
 onMounted(() => {
   fetchISSPosition()
