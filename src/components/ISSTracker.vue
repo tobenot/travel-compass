@@ -130,8 +130,12 @@ const region = computed(() => {
   
   let areaType = '', areaName = '', areaDetail = '';
   
-  // 判断大陆区域（粗略）
-  if (latitude >= 15 && latitude <= 70 && longitude >= -30 && longitude <= 60) {
+  // 新增：如果在中国大陆范围内（粗略判断：纬度18°-54°，经度73°-135°）
+  if (latitude >= 18 && latitude <= 54 && longitude >= 73 && longitude <= 135) {
+    areaType = '大陆';
+    areaName = '中国';
+    areaDetail = longitude < 103 ? '西部' : '东部';
+  } else if (latitude >= 15 && latitude <= 70 && longitude >= -30 && longitude <= 60) {
     areaType = '大陆';
     areaName = '欧洲';
     areaDetail = longitude < 15 ? '西部' : '东部';
