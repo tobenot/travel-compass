@@ -21,6 +21,11 @@ export const navigationData = [
         title: 'DeepSeek - 探索未至之境',
         description: '大模型AI对话',
         link: 'https://chat.deepseek.com/'
+      },
+      {
+        title: '硅基流动',
+        description: '文生文AI对话平台',
+        link: 'https://cloud.siliconflow.cn/i/MPh5E7rC'
       }
     ]
   },
@@ -83,6 +88,12 @@ export const navigationData = [
         description: '百度搜索日历',
         link: 'https://www.baidu.com/s?wd=%E6%97%A5%E5%8E%86',
         icon: '🗓'
+      },
+      {
+        title: '谷歌翻译',
+        description: '在线翻译工具',
+        link: 'https://translate.google.com/',
+        icon: '🌐'
       }
     ]
   }
