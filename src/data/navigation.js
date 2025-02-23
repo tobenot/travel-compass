@@ -42,6 +42,11 @@ export const navigationData = [
         title: '相白质黑',
         description: '最近单曲循环中...',
         link: 'https://www.bilibili.com/video/BV1WD4y1x7ia/'
+      },
+      {
+        title: '相白质黑 - 后摇版本',
+        description: '相白质黑的后摇版本',
+        link: 'https://www.bilibili.com/video/BV1YZ421Y7Wx/'
       }
     ]
   },
