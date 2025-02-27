@@ -1,89 +1,122 @@
 <template>
-  <div class="fixed bottom-6 right-6 z-50 w-80
-              p-5 bg-gradient-to-br from-white/95 to-blue-50/95 dark:from-slate-800/95 dark:to-blue-900/95 
-              rounded-2xl backdrop-blur-md
-              border border-blue-200 dark:border-blue-500/30
-              shadow-[0_0_30px_rgba(59,130,246,0.2)]
-              dark:shadow-[0_0_30px_rgba(59,130,246,0.15)]
-              animate-float cursor-pointer
-              hover:scale-105 hover:-translate-y-1
-              overflow-hidden"
-       @mouseenter="stopAnimation"
-       @mouseleave="startAnimation"
-       @click="toggleLinks"
-       :style="{ animation: isAnimationPaused ? 'none' : 'float 6s ease-in-out infinite' }">
+  <div class="fixed bottom-6 right-6 z-50"
+       :class="{ 'w-80': !minimized, 'w-20': minimized }">
     
-    <!-- 装饰性舱窗 -->
-    <div class="absolute -right-4 -top-4 w-16 h-16 bg-blue-500/10 rounded-full blur-md"></div>
-    <div class="absolute right-8 top-8 w-3 h-3 bg-blue-400/30 rounded-full"></div>
-    <div class="absolute right-12 top-6 w-2 h-2 bg-blue-400/20 rounded-full"></div>
-    
-    <!-- 飞船舱门装饰线 -->
-    <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-blue-500/0 via-blue-500/20 to-blue-500/0"></div>
-    
-    <div class="flex items-center space-x-3 mb-4">
+    <!-- 最小化模式 -->
+    <div v-if="minimized" 
+         class="p-4 bg-gradient-to-br from-white/95 to-blue-50/95 dark:from-slate-800/95 dark:to-blue-900/95 
+                rounded-2xl backdrop-blur-md
+                border border-blue-200 dark:border-blue-500/30
+                shadow-[0_0_30px_rgba(59,130,246,0.2)]
+                dark:shadow-[0_0_30px_rgba(59,130,246,0.15)]
+                animate-float cursor-pointer
+                hover:scale-105 hover:-translate-y-1
+                flex items-center justify-center"
+         @click="minimized = false"
+         :style="{ animation: isAnimationPaused ? 'none' : 'float 6s ease-in-out infinite' }">
       <div class="relative">
         <span class="text-2xl">🛸</span>
         <!-- 脉冲指示灯 -->
         <div class="absolute -right-1 -bottom-1 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
       </div>
-      <h3 class="text-lg font-medium text-gray-800 dark:text-blue-50">国际空间站位置</h3>
     </div>
-    
-    <div v-if="issData" class="space-y-2 relative">
-      <!-- 数据显示面板 -->
-      <div class="space-y-2 bg-white/50 dark:bg-slate-900/50 rounded-lg p-3 
-                  border border-blue-100 dark:border-blue-500/20">
-        <p class="text-sm text-gray-600 dark:text-blue-100/90 flex justify-between">
-          <span class="font-medium">纬度:</span>
-          <span class="font-mono">{{ issData.latitude.toFixed(2) }}°</span>
-        </p>
-        <p class="text-sm text-gray-600 dark:text-blue-100/90 flex justify-between">
-          <span class="font-medium">经度:</span>
-          <span class="font-mono">{{ issData.longitude.toFixed(2) }}°</span>
-        </p>
-        <p class="text-sm text-gray-600 dark:text-blue-100/90 flex justify-between">
-          <span class="font-medium">高度:</span>
-          <span class="font-mono">{{ issData.altitude.toFixed(2) }} km</span>
-        </p>
-        <p class="text-sm text-gray-600 dark:text-blue-100/90 flex justify-between">
-          <span class="font-medium">速度:</span>
-          <span class="font-mono">{{ (issData.velocity).toFixed(2) }} km/h</span>
-        </p>
-        <p class="text-sm text-gray-600 dark:text-blue-100/90 flex justify-between">
-          <span class="font-medium">所在区域:</span>
-          <span class="font-mono">{{ region.location }}</span>
-        </p>
+
+    <!-- 完整模式 -->
+    <div v-else 
+         class="p-5 bg-gradient-to-br from-white/95 to-blue-50/95 dark:from-slate-800/95 dark:to-blue-900/95 
+                rounded-2xl backdrop-blur-md
+                border border-blue-200 dark:border-blue-500/30
+                shadow-[0_0_30px_rgba(59,130,246,0.2)]
+                dark:shadow-[0_0_30px_rgba(59,130,246,0.15)]
+                animate-float cursor-pointer
+                hover:scale-105 hover:-translate-y-1
+                overflow-hidden"
+       @mouseenter="stopAnimation"
+       @mouseleave="startAnimation"
+       @click="toggleLinks"
+       :style="{ animation: isAnimationPaused ? 'none' : 'float 6s ease-in-out infinite' }">
+      
+      <!-- 装饰性舱窗 -->
+      <div class="absolute -right-4 -top-4 w-16 h-16 bg-blue-500/10 rounded-full blur-md"></div>
+      <div class="absolute right-8 top-8 w-3 h-3 bg-blue-400/30 rounded-full"></div>
+      <div class="absolute right-12 top-6 w-2 h-2 bg-blue-400/20 rounded-full"></div>
+      
+      <!-- 飞船舱门装饰线 -->
+      <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-blue-500/0 via-blue-500/20 to-blue-500/0"></div>
+      
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center space-x-3">
+          <div class="relative">
+            <span class="text-2xl">🛸</span>
+            <!-- 脉冲指示灯 -->
+            <div class="absolute -right-1 -bottom-1 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+          </div>
+          <h3 class="text-lg font-medium text-gray-800 dark:text-blue-50">国际空间站位置</h3>
+        </div>
+        
+        <!-- 最小化按钮 -->
+        <button @click="minimized = true" class="p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
+          </svg>
+        </button>
       </div>
       
-      <!-- 更新时间 -->
-      <p class="text-xs text-gray-500 dark:text-blue-200/60 mt-3 text-right font-mono">
-        更新时间: {{ new Date(issData.timestamp * 1000).toLocaleString() }}
-      </p>
-      
-      <!-- 新增：点击时显示链接 -->
-      <div v-if="showLinks" class="mt-2 p-2 bg-white/50 dark:bg-slate-900/50 rounded-lg border border-blue-100 dark:border-blue-500/20">
-        <ul class="space-y-1">
-          <li>
-            <a href="https://www.youtube.com/watch?v=OCem0E-0Q6Y" target="_blank" class="text-blue-500 hover:underline">
-              空间站直播
-            </a>
-          </li>
-          <li>
-            <a href="https://zh.wikipedia.org/wiki/国际空间站" target="_blank" class="text-blue-500 hover:underline">
-              国际空间站 - 维基百科
-            </a>
-          </li>
-          <li>
-            <a href="https://www.nasa.gov/international-space-station/" target="_blank" class="text-blue-500 hover:underline">
-              NASA 国际空间站
-            </a>
-          </li>
-        </ul>
+      <div v-if="issData" class="space-y-2 relative">
+        <!-- 数据显示面板 -->
+        <div class="space-y-2 bg-white/50 dark:bg-slate-900/50 rounded-lg p-3 
+                    border border-blue-100 dark:border-blue-500/20">
+          <p class="text-sm text-gray-600 dark:text-blue-100/90 flex justify-between">
+            <span class="font-medium">纬度:</span>
+            <span class="font-mono">{{ issData.latitude.toFixed(2) }}°</span>
+          </p>
+          <p class="text-sm text-gray-600 dark:text-blue-100/90 flex justify-between">
+            <span class="font-medium">经度:</span>
+            <span class="font-mono">{{ issData.longitude.toFixed(2) }}°</span>
+          </p>
+          <p class="text-sm text-gray-600 dark:text-blue-100/90 flex justify-between">
+            <span class="font-medium">高度:</span>
+            <span class="font-mono">{{ issData.altitude.toFixed(2) }} km</span>
+          </p>
+          <p class="text-sm text-gray-600 dark:text-blue-100/90 flex justify-between">
+            <span class="font-medium">速度:</span>
+            <span class="font-mono">{{ (issData.velocity).toFixed(2) }} km/h</span>
+          </p>
+          <p class="text-sm text-gray-600 dark:text-blue-100/90 flex justify-between">
+            <span class="font-medium">所在区域:</span>
+            <span class="font-mono">{{ region.location }}</span>
+          </p>
+        </div>
+        
+        <!-- 更新时间 -->
+        <p class="text-xs text-gray-500 dark:text-blue-200/60 mt-3 text-right font-mono">
+          更新时间: {{ new Date(issData.timestamp * 1000).toLocaleString() }}
+        </p>
+        
+        <!-- 新增：点击时显示链接 -->
+        <div v-if="showLinks" class="mt-2 p-2 bg-white/50 dark:bg-slate-900/50 rounded-lg border border-blue-100 dark:border-blue-500/20">
+          <ul class="space-y-1">
+            <li>
+              <a href="https://www.youtube.com/watch?v=OCem0E-0Q6Y" target="_blank" class="text-blue-500 hover:underline">
+                空间站直播
+              </a>
+            </li>
+            <li>
+              <a href="https://zh.wikipedia.org/wiki/国际空间站" target="_blank" class="text-blue-500 hover:underline">
+                国际空间站 - 维基百科
+              </a>
+            </li>
+            <li>
+              <a href="https://www.nasa.gov/international-space-station/" target="_blank" class="text-blue-500 hover:underline">
+                NASA 国际空间站
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div v-else class="text-sm text-gray-500 dark:text-blue-100/60 animate-pulse">
-      正在建立连接...
+      <div v-else class="text-sm text-gray-500 dark:text-blue-100/60 animate-pulse">
+        正在建立连接...
+      </div>
     </div>
   </div>
 </template>
@@ -94,6 +127,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 const issData = ref(null)
 const isAnimationPaused = ref(false)
 const showLinks = ref(false)
+const minimized = ref(false)
 let timer = null
 
 const fetchISSPosition = async () => {

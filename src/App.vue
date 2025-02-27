@@ -51,6 +51,9 @@
 
       <!-- ISS Tracker -->
       <ISSTracker />
+      
+      <!-- 音乐播放器 -->
+      <MusicPlayer />
     </div>
   </div>
 </template>
@@ -60,6 +63,7 @@ import { ref, computed } from 'vue'
 import TheHeader from './components/TheHeader.vue'
 import CategorySection from './components/CategorySection.vue'
 import ISSTracker from './components/ISSTracker.vue'
+import MusicPlayer from './components/MusicPlayer.vue'
 
 // 定义可选的图片数组
 const portraitImages = [
