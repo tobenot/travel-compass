@@ -82,6 +82,11 @@ export const navigationData = [
         title: 'Mermaid',
         description: '在线绘制 Mermaid 图表',
         link: 'https://ikalas.com/app/mermaid-live-editor'
+      },
+      {
+        title: 'Element Plus 图标库',
+        description: 'Vue 3 组件库图标集合',
+        link: 'https://element-plus.org/zh-CN/component/icon.html'
       }
     ]
   },
@@ -99,6 +104,11 @@ export const navigationData = [
         description: '在线翻译工具',
         link: 'https://translate.google.com/',
         icon: '🌐'
+      },
+      {
+        title: '去水印工具',
+        description: '移除图片中的半透明水印',
+        link: 'https://www.watermarkremover.io/zh/upload'
       }
     ]
   }
