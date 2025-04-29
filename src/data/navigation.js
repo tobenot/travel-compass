@@ -31,6 +31,16 @@ export const navigationData = [
         title: 'ChatGPT',
         description: 'OpenAI官方AI对话工具',
         link: 'https://chatgpt.com/'
+      },
+      {
+        title: 'Gemini',
+        description: 'Google AI对话工具',
+        link: 'https://gemini.google.com/'
+      },
+      {
+        title: 'AI工具集官网',
+        description: '1000+ AI工具集合',
+        link: 'https://ai-bot.cn/'
       }
     ]
   },
@@ -79,6 +89,11 @@ export const navigationData = [
         title: 'Abandoned Codex MUD',
         description: '经典MUD游戏',
         link: 'https://www.abandonedcodex.net/index.php'
+      },
+      {
+        title: '独立精神',
+        description: '独立游戏资讯网站',
+        link: 'https://indienova.com/'
       }
     ]
   },
@@ -104,6 +119,11 @@ export const navigationData = [
         title: 'Element Plus 图标库',
         description: 'Vue 3 组件库图标集合',
         link: 'https://element-plus.org/zh-CN/component/icon.html'
+      },
+      {
+        title: 'Photopea',
+        description: '在线PS替代工具',
+        link: 'https://www.photopea.com/'
       }
     ]
   },
@@ -126,6 +146,26 @@ export const navigationData = [
         title: '去水印工具',
         description: '移除图片中的半透明水印',
         link: 'https://www.watermarkremover.io/zh/upload'
+      }
+    ]
+  },
+  {
+    title: '阅读',
+    items: [
+      {
+        title: '作家之屋',
+        description: '我的个人博客',
+        link: 'https://tobenot.top/tags/weekly/'
+      },
+      {
+        title: '一个行者的轨迹',
+        description: '感兴趣的博客',
+        link: 'https://dtysky.moe/'
+      },
+      {
+        title: '魚の',
+        description: '感兴趣的博客，周刊',
+        link: 'https://blog.sakanano.moe/journals/'
       }
     ]
   }
