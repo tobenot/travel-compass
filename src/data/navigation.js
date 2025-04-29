@@ -26,6 +26,11 @@ export const navigationData = [
         title: '硅基流动',
         description: '文生文AI对话平台',
         link: 'https://cloud.siliconflow.cn/i/MPh5E7rC'
+      },
+      {
+        title: 'ChatGPT',
+        description: 'OpenAI官方AI对话工具',
+        link: 'https://chatgpt.com/'
       }
     ]
   },
@@ -47,6 +52,18 @@ export const navigationData = [
         title: '相白质黑 - 后摇版本',
         description: '相白质黑的后摇版本',
         link: 'https://www.bilibili.com/video/BV1YZ421Y7Wx/'
+      },
+      {
+        title: 'To The Wilder - 死亡搁浅2',
+        description: '杜比全景声+HIRES OST',
+        link: 'https://www.bilibili.com/video/BV1xSQGYUEzC/',
+        icon: '🎵'
+      },
+      {
+        title: '来自星尘片尾曲',
+        description: '游戏《来自星尘》片尾曲',
+        link: 'https://www.bilibili.com/video/BV1qfpoeuE5j/',
+        icon: '🎵'
       }
     ]
   },
