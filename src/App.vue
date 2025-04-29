@@ -41,6 +41,12 @@
       </div>
 
       <main class="flex-1 container mx-auto px-4 py-8">
+        <!-- Container for ISSTracker and MusicPlayer -->
+        <div class="flex flex-wrap justify-center gap-6 mb-6">
+          <ISSTracker />
+          <MusicPlayer />
+        </div>
+
         <CategorySection />
       </main>
       <footer class="bg-gray-100/80 dark:bg-dark-700/80 backdrop-blur-sm py-6 w-full mt-auto">
@@ -48,12 +54,6 @@
           <p>© {{ new Date().getFullYear() }} 旅路罗盘. All rights reserved.</p>
         </div>
       </footer>
-
-      <!-- ISS Tracker -->
-      <ISSTracker />
-      
-      <!-- 音乐播放器 -->
-      <MusicPlayer />
     </div>
   </div>
 </template>

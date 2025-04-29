@@ -1,41 +1,15 @@
 <template>
   <div 
-    class="fixed z-50 bg-white/70 dark:bg-dark-600/80 backdrop-blur-lg 
+    class="w-full max-w-sm bg-white/70 dark:bg-dark-600/80 backdrop-blur-lg 
            rounded-2xl shadow-lg border border-primary-200 dark:border-primary-900
            transition-all duration-300 p-3"
-    :class="{
-      'w-20': minimized,
-      'w-72': !minimized,
-      'bottom-4 left-4': position === 'left',
-      'bottom-4 right-4': position === 'right'
-    }"
   >
-    <!-- 最小化模式 -->
-    <div v-if="minimized" class="flex items-center justify-center">
-      <button @click="minimized = false" class="p-2 rounded-full bg-primary-500/10 text-primary-500">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-        </svg>
-      </button>
-    </div>
-
     <!-- 完整模式 -->
-    <div v-else class="space-y-3">
+    <div class="space-y-3">
       <div class="flex items-center justify-between">
         <h3 class="font-medium text-gray-900 dark:text-white truncate flex-1">{{ currentSong.title }}</h3>
         <div class="flex items-center space-x-1">
-          <!-- 位置切换按钮 -->
-          <button @click="togglePosition" class="p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-            </svg>
-          </button>
           <!-- 最小化按钮 -->
-          <button @click="minimized = true" class="p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
-            </svg>
-          </button>
         </div>
       </div>
 
@@ -126,11 +100,6 @@ const isMuted = ref(false)
 const previousVolume = ref(0.7)
 const autoPlay = ref(true)
 const position = ref('left')
-
-// 切换位置
-const togglePosition = () => {
-  position.value = position.value === 'left' ? 'right' : 'left'
-}
 
 // 示例歌曲列表 - 您需要替换为实际的音乐文件
 const songs = [
