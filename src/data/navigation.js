@@ -155,7 +155,7 @@ export const navigationData = [
       {
         title: '作家之屋',
         description: '我的个人博客',
-        link: 'https://tobenot.top/tags/weekly/'
+        link: 'https://tobenot.top/'
       },
       {
         title: '一个行者的轨迹',
