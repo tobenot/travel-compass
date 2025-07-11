@@ -98,7 +98,7 @@ const audio = ref(null)
 const volume = ref(0.7)
 const isMuted = ref(false)
 const previousVolume = ref(0.7)
-const autoPlay = ref(true)
+const autoPlay = ref(false)
 const position = ref('left')
 
 // 示例歌曲列表 - 您需要替换为实际的音乐文件
