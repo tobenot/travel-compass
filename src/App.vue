@@ -217,16 +217,28 @@ import CategorySection from './components/CategorySection.vue'
 import ISSTracker from './components/ISSTracker.vue'
 import MusicPlayer from './components/MusicPlayer.vue'
 
-// 定义可选的立绘图片数组
+// 定义立绘图片及其权重
 const portraitImages = [
-	'./images/portrait1.png',
-	'./images/portrait2.png',
-	'./images/portrait3.png'
+	{ src: './images/portrait1.png', weight: 100 }, // portrait1权重最高
+	{ src: './images/portrait2.png', weight: 20 },
+	{ src: './images/portrait3.png', weight: 30 },
+	{ src: './images/portrait4.png', weight: 20 }
 ]
 
-// 随机选择一个立绘肖像
+// 根据权重随机选择一个立绘肖像
 const randomPortrait = computed(() => {
-	return portraitImages[Math.floor(Math.random() * portraitImages.length)]
+	const totalWeight = portraitImages.reduce((sum, img) => sum + img.weight, 0)
+	let random = Math.random() * totalWeight
+	
+	for (const img of portraitImages) {
+		random -= img.weight
+		if (random <= 0) {
+			return img.src
+		}
+	}
+	
+	// 兜底返回第一个
+	return portraitImages[0].src
 })
 </script>
 
