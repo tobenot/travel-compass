@@ -15,7 +15,7 @@
 			<TheHeader />
 			
 			<!-- 海报展示区域 -->
-			<div class="mx-auto mt-8 mb-6 px-4">
+			<div v-if="SHOW_POSTERS" class="mx-auto mt-8 mb-6 px-4">
 				<div class="relative">
 					<!-- 装饰性背景 -->
 					<div class="absolute -inset-6 bg-gradient-to-r from-primary-500/10 to-gold-500/10 
@@ -127,7 +127,7 @@
 			</div>
 
 			<!-- 立绘肖像展示区域 -->
-			<div class="mx-auto mb-8 px-4">
+			<div class="mx-auto mb-8 px-4" :class="{ 'mt-8': !SHOW_POSTERS }">
 				<div class="relative flex justify-center">
 					<!-- 装饰性光晕背景 -->
 					<div class="absolute -inset-8 bg-gradient-to-r from-primary-600/20 via-gold-500/20 to-primary-600/20 
@@ -216,6 +216,10 @@ import TheHeader from './components/TheHeader.vue'
 import CategorySection from './components/CategorySection.vue'
 import ISSTracker from './components/ISSTracker.vue'
 import MusicPlayer from './components/MusicPlayer.vue'
+
+// 配置开关 - 设置为false隐藏poster区域
+const SHOW_POSTERS = false
+
 
 // 定义立绘图片及其权重
 const portraitImages = [
