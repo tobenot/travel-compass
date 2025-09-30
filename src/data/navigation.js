@@ -3,6 +3,36 @@ export const navigationData = [
     title: 'AI创作工具',
     items: [
       {
+        title: 'DeepSeek',
+        description: '大模型AI',
+        link: 'https://chat.deepseek.com/'
+      },
+      {
+        title: 'ChatGPT',
+        description: 'OpenAI官方AI对话工具',
+        link: 'https://chatgpt.com/'
+      },
+      {
+        title: 'Gemini',
+        description: 'Google AI对话工具',
+        link: 'https://gemini.google.com/'
+      },
+      {
+        title: 'Google AI Studio',
+        description: '谷歌AI开发平台',
+        link: 'https://aistudio.google.com/'
+      },
+      {
+        title: 'LMRouter',
+        description: 'AI中转站lmrouter',
+        link: 'https://lmrouter.com/dashboard/credits'
+      },
+      {
+        title: 'OpenRouter',
+        description: 'AI中转站openrouter',
+        link: 'https://openrouter.ai/settings/credits'
+      },
+      {
         title: '即梦AI',
         description: '文字生成图片工具',
         link: 'https://jimeng.jianying.com/ai-tool/image/generate'
@@ -18,30 +48,15 @@ export const navigationData = [
         link: 'https://suno.com/create'
       },
       {
-        title: 'DeepSeek - 探索未至之境',
-        description: '大模型AI对话',
-        link: 'https://chat.deepseek.com/'
-      },
-      {
         title: '硅基流动',
         description: '文生文AI对话平台',
         link: 'https://cloud.siliconflow.cn/i/MPh5E7rC'
       },
       {
-        title: 'ChatGPT',
-        description: 'OpenAI官方AI对话工具',
-        link: 'https://chatgpt.com/'
-      },
-      {
-        title: 'Gemini',
-        description: 'Google AI对话工具',
-        link: 'https://gemini.google.com/'
-      },
-      {
         title: 'AI工具集官网',
         description: '1000+ AI工具集合',
         link: 'https://ai-bot.cn/'
-      }
+      },
     ]
   },
   {
@@ -54,13 +69,9 @@ export const navigationData = [
         icon: '🎵'
       },
       {
-        title: '相白质黑',
-        description: '最近单曲循环中...',
-        link: 'https://www.bilibili.com/video/BV1WD4y1x7ia/'
-      },
-      {
         title: '相白质黑 - 后摇版本',
-        description: '相白质黑的后摇版本',
+        description: '',
+        icon: '🎵',
         link: 'https://www.bilibili.com/video/BV1YZ421Y7Wx/'
       },
       {
@@ -70,9 +81,15 @@ export const navigationData = [
         icon: '🎵'
       },
       {
-        title: '来自星尘片尾曲',
-        description: '游戏《来自星尘》片尾曲',
+        title: 'Moon Plate',
+        description: '来自星尘片尾曲',
         link: 'https://www.bilibili.com/video/BV1qfpoeuE5j/',
+        icon: '🎵'
+      },
+      {
+        title: 'To the edge',
+        description: '既有黑又有白',
+        link: 'https://www.bilibili.com/video/BV1641CYVEsm/',
         icon: '🎵'
       }
     ]
@@ -98,36 +115,6 @@ export const navigationData = [
     ]
   },
   {
-    title: '效率工具',
-    items: [
-      {
-        title: '坚果云',
-        description: '同步文件必备',
-        link: 'https://www.jianguoyun.com'
-      },
-      {
-        title: 'Flomo',
-        description: '快速记录灵感',
-        link: 'https://v.flomoapp.com/mine'
-      },
-      {
-        title: 'Mermaid',
-        description: '在线绘制 Mermaid 图表',
-        link: 'https://ikalas.com/app/mermaid-live-editor'
-      },
-      {
-        title: 'Element Plus 图标库',
-        description: 'Vue 3 组件库图标集合',
-        link: 'https://element-plus.org/zh-CN/component/icon.html'
-      },
-      {
-        title: 'Photopea',
-        description: '在线PS替代工具',
-        link: 'https://www.photopea.com/'
-      }
-    ]
-  },
-  {
     title: '实用工具',
     items: [
       {
@@ -146,6 +133,36 @@ export const navigationData = [
         title: '去水印工具',
         description: '移除图片中的半透明水印',
         link: 'https://www.watermarkremover.io/zh/upload'
+      }
+    ]
+  },
+  {
+    title: '效率工具',
+    items: [
+      {
+        title: 'Flomo',
+        description: '快速记录灵感',
+        link: 'https://v.flomoapp.com/mine'
+      },
+      {
+        title: '坚果云',
+        description: '同步文件必备',
+        link: 'https://www.jianguoyun.com'
+      },
+      {
+        title: 'Mermaid',
+        description: '在线绘制 Mermaid 图表',
+        link: 'https://ikalas.com/app/mermaid-live-editor'
+      },
+      {
+        title: 'Element Plus 图标库',
+        description: 'Vue 3 组件库图标集合',
+        link: 'https://element-plus.org/zh-CN/component/icon.html'
+      },
+      {
+        title: 'Photopea',
+        description: '在线PS替代工具',
+        link: 'https://www.photopea.com/'
       }
     ]
   },
