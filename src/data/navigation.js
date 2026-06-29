@@ -60,6 +60,41 @@ export const navigationData = [
     ]
   },
   {
+    title: 'AI使用仪表盘',
+    items: [
+      {
+        title: 'DeepSeek 用量',
+        description: 'DeepSeek API 用量与配额',
+        link: 'https://platform.deepseek.com/usage'
+      },
+      {
+        title: 'OpenCode',
+        description: 'OpenCode 使用仪表盘',
+        link: 'https://opencode.ai/zh/go'
+      },
+      {
+        title: '火山方舟',
+        description: '字节火山方舟模型订阅管理',
+        link: 'https://console.volcengine.com/ark/region:ark+cn-beijing/openManagement?LLM=%7B%7D&advancedActiveKey=subscribe'
+      }
+    ]
+  },
+  {
+    title: 'AI购买盯梢',
+    items: [
+      {
+        title: '阿里云 Coding Plan',
+        description: '阿里云通义编程套餐购买',
+        link: 'https://common-buy.aliyun.com/coding-plan'
+      },
+      {
+        title: '智谱 GLM Coding',
+        description: '智谱 GLM 编程套餐',
+        link: 'https://bigmodel.cn/glm-coding'
+      }
+    ]
+  },
+  {
     title: '音乐娱乐',
     items: [
       {
