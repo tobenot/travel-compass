@@ -23,14 +23,14 @@ export const navigationData = [
         link: 'https://aistudio.google.com/'
       },
       {
-        title: 'LMRouter',
-        description: 'AI中转站lmrouter',
-        link: 'https://lmrouter.com/dashboard/credits'
-      },
-      {
         title: 'OpenRouter',
         description: 'AI中转站openrouter',
         link: 'https://openrouter.ai/settings/credits'
+      },
+      {
+        title: '老张AI',
+        description: 'AI中转站API日志',
+        link: 'https://api.laozhang.ai/log?current=1&pageSize=20'
       },
       {
         title: '即梦AI',
@@ -46,11 +46,6 @@ export const navigationData = [
         title: '生成音乐',
         description: '每天白嫖5首AI音乐',
         link: 'https://suno.com/create'
-      },
-      {
-        title: '硅基流动',
-        description: '文生文AI对话平台',
-        link: 'https://cloud.siliconflow.cn/i/MPh5E7rC'
       },
       {
         title: 'AI工具集官网',
