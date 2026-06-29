@@ -213,6 +213,21 @@ export const navigationData = [
         title: '魚の',
         description: '感兴趣的博客，周刊',
         link: 'https://blog.sakanano.moe/journals/'
+      },
+      {
+        title: 'VRC朋友的博客',
+        description: 'xiayuwu',
+        link: 'http://www.xiayuwu.top/'
+      },
+      {
+        title: 'charleycat',
+        description: '小本猫的 bits',
+        link: 'https://bits.xiaobenmao.win/'
+      },
+      {
+        title: 'mistval',
+        description: '朋友的博客',
+        link: 'http://www.mistval.top/'
       }
     ]
   }
