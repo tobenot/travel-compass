@@ -13,6 +13,11 @@ export const navigationData = [
         link: 'https://chatgpt.com/'
       },
       {
+        title: 'ZenMux',
+        description: '使用 fable 的 AI 对话',
+        link: 'https://zenmux.ai/platform/chat?chatId=newChat'
+      },
+      {
         title: 'Gemini',
         description: 'Google AI对话工具',
         link: 'https://gemini.google.com/'
