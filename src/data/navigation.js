@@ -202,7 +202,22 @@ export const navigationData = [
     ]
   },
   {
-    title: '阅读',
+    title: '技术博客',
+    items: [
+      {
+        title: '余弦',
+        description: '前端 / 周刊',
+        link: 'https://blog.cosine.ren/'
+      },
+      {
+        title: '烟雨迷离半世殇',
+        description: 'Unity / 渲染 / AI Agent',
+        link: 'https://www.lfzxb.top/'
+      }
+    ]
+  },
+  {
+    title: '个人博客',
     items: [
       {
         title: '作家之屋',
@@ -216,8 +231,18 @@ export const navigationData = [
       },
       {
         title: '魚の',
-        description: '感兴趣的博客，周刊',
-        link: 'https://blog.sakanano.moe/journals/'
+        description: '周刊 / 随笔',
+        link: 'https://blog.sakanano.moe/'
+      },
+      {
+        title: '莎夜',
+        description: '学习笔记 / 随笔',
+        link: 'https://neotetra.top/'
+      },
+      {
+        title: '大白最黑',
+        description: '生活随笔',
+        link: 'https://dabaizuihei.github.io/'
       }
     ]
   },
