@@ -185,6 +185,11 @@ export const navigationData = [
         link: 'https://www.jianguoyun.com'
       },
       {
+        title: 'Wormhole',
+        description: '端到端加密文件分享',
+        link: 'https://wormhole.app/'
+      },
+      {
         title: 'Mermaid',
         description: '在线绘制 Mermaid 图表',
         link: 'https://ikalas.com/app/mermaid-live-editor'
@@ -243,6 +248,11 @@ export const navigationData = [
         title: '大白最黑',
         description: '生活随笔',
         link: 'https://dabaizuihei.github.io/'
+      },
+      {
+        title: '咕咕的花圃',
+        description: '生活随笔',
+        link: 'https://guutao.top/'
       }
     ]
   },
