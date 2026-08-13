@@ -175,6 +175,12 @@ export const navigationData = [
     title: '效率工具',
     items: [
       {
+        title: '飞书',
+        description: '即时通讯 / 消息',
+        link: 'https://feishu.cn/next/messenger',
+        icon: '✈️'
+      },
+      {
         title: 'Flomo',
         description: '快速记录灵感',
         link: 'https://v.flomoapp.com/mine'
