@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-0 z-50 bg-gray-50 dark:bg-dark-700 border-b-[3px] border-black dark:border-white">
+  <header class="sticky top-0 z-50 bg-gray-50/90 dark:bg-dark-700/90 backdrop-blur border-b-2 border-gray-300 dark:border-gray-600">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row md:items-center gap-3 md:gap-6 py-4">
         <div class="flex items-center gap-2 shrink-0">
@@ -11,11 +11,11 @@
 
         <div class="relative flex-1">
           <div class="flex items-stretch bg-white dark:bg-dark-600
-                      border-[3px] border-black dark:border-white
-                      shadow-[4px_4px_0_0_#000] dark:shadow-[4px_4px_0_0_#fff]
-                      focus-within:shadow-none focus-within:translate-x-[4px] focus-within:translate-y-[4px]
+                      border-2 border-gray-300 dark:border-gray-600
+                      shadow-[3px_3px_0_0_rgba(0,0,0,0.12)] dark:shadow-[3px_3px_0_0_rgba(255,255,255,0.12)]
+                      focus-within:shadow-none focus-within:translate-x-[3px] focus-within:translate-y-[3px] focus-within:border-primary-600 dark:focus-within:border-primary-400
                       transition-all duration-100">
-            <span class="pl-3 pr-2 text-black dark:text-white">
+            <span class="pl-3 pr-2 text-gray-500 dark:text-gray-400">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
@@ -26,7 +26,7 @@
               v-model="searchQuery"
               placeholder="搜索导航或直接搜索..."
               class="flex-1 min-w-0 px-2 py-3 bg-transparent focus:outline-none
-                     text-black dark:text-white
+                     text-gray-900 dark:text-white
                      placeholder-gray-400 dark:placeholder-gray-500"
               @input="handleSearch"
             />
@@ -35,19 +35,19 @@
               <button
                 @click="handleGoogleSearch"
                 class="flex items-center px-3 md:px-4 text-sm font-bold font-grotesk
-                       border-l-[3px] border-black dark:border-white
-                       bg-black text-white dark:bg-white dark:text-black
+                       border-l-2 border-gray-300 dark:border-gray-600
+                       bg-gray-800 text-white dark:bg-gray-200 dark:text-gray-900
                        transition-all duration-100
-                       hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white"
+                       hover:bg-gray-600 dark:hover:bg-white"
               >
                 G
               </button>
               <button
                 @click="handleBaiduSearch"
                 class="flex items-center px-3 md:px-4 text-sm font-bold font-grotesk
-                       border-l-[3px] border-black dark:border-white
+                       border-l-2 border-gray-300 dark:border-gray-600
                        transition-all duration-100
-                       hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+                       hover:bg-gray-800 hover:text-white dark:hover:bg-white dark:hover:text-gray-900"
               >
                 B
               </button>

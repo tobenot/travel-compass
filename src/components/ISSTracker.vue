@@ -1,7 +1,7 @@
 <template>
   <div class="w-full max-w-sm p-5 bg-white dark:bg-slate-900
-              border-[3px] border-black dark:border-white
-              shadow-[4px_4px_0_0_#000] dark:shadow-[4px_4px_0_0_#fff]
+              border-2 border-gray-300 dark:border-gray-600
+              shadow-[3px_3px_0_0_rgba(0,0,0,0.12)] dark:shadow-[3px_3px_0_0_rgba(255,255,255,0.12)]
               relative overflow-hidden">
     
     <!-- 装饰性舱窗（保留超自然点缀，改直角） -->
@@ -28,7 +28,7 @@
     <div v-if="issData" class="space-y-2 relative">
       <!-- 数据显示面板 -->
       <div class="space-y-2 bg-gray-50 dark:bg-slate-800 p-3
-                  border-2 border-black/80 dark:border-white/60">
+                  border-2 border-gray-300 dark:border-gray-600">
         <p class="text-sm text-gray-600 dark:text-blue-100/90 flex justify-between">
           <span class="font-medium">纬度:</span>
           <span class="font-mono">{{ issData.latitude.toFixed(2) }}°</span>
@@ -57,7 +57,7 @@
       </p>
       
       <!-- 新增：链接默认显示 -->
-      <div class="mt-2 p-2 bg-gray-50 dark:bg-slate-800 border-2 border-black/80 dark:border-white/60">
+      <div class="mt-2 p-2 bg-gray-50 dark:bg-slate-800 border-2 border-gray-300 dark:border-gray-600">
         <ul class="space-y-1">
           <li>
             <a href="https://www.youtube.com/watch?v=OCem0E-0Q6Y" target="_blank" class="text-blue-500 hover:underline">

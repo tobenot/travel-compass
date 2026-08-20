@@ -1,142 +1,111 @@
 <template>
   <div>
-    <!-- 分类页签：粗野方按钮，吸顶 -->
+    <!-- 分类页签：方按钮，吸顶，选中态反色 -->
     <nav
       class="sticky top-16 z-40 -mx-4 px-4 py-3 mb-10
              bg-gray-50 dark:bg-dark-700
-             border-b-[3px] border-black dark:border-white"
+             border-b-2 border-gray-300 dark:border-gray-600
+             overflow-x-auto whitespace-nowrap"
     >
-      <div class="container mx-auto flex gap-2 overflow-x-auto no-scrollbar">
+      <div class="inline-flex gap-2">
         <button
-          v-for="(category, index) in navigationData"
-          :key="category.title"
-          class="shrink-0 flex items-center gap-2 px-3 py-2 text-sm font-bold
-                 border-[3px] border-black dark:border-white
-                 font-grotesk transition-all duration-100
-                 bg-white dark:bg-dark-600 text-black dark:text-white
-                 hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
-          :class="{
-            'translate-x-[3px] translate-y-[3px] bg-black text-white dark:bg-white dark:text-black':
-              activeIndex === index
-          }"
-          @click="scrollToCategory(index)"
+          v-for="(cat, i) in visibleCategories"
+          :key="cat.id"
+          @click="scrollToCategory(cat.id)"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5
+                 border-2 font-grotesk text-sm font-medium
+                 transition-colors duration-100
+                 focus:outline-none
+                 focus-visible:ring-2 focus-visible:ring-primary-500
+                 focus-visible:ring-offset-2
+                 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-dark-700"
+          :class="activeCategory === cat.id
+            ? { 'bg-primary-700 text-white border-primary-700 dark:bg-primary-400 dark:text-dark-900 dark:border-primary-400': true }
+            : { 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100 hover:border-gray-400 dark:bg-dark-600 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-dark-500': true }"
         >
-          <span class="text-[11px] font-mono opacity-60">
-            {{ String(index + 1).padStart(2, '0') }}
-          </span>
-          {{ category.title }}
+          <span class="text-xs opacity-70 font-mono">{{ pad2(i + 1) }}</span>
+          {{ cat.title }}
         </button>
       </div>
     </nav>
 
     <!-- 分类内容 -->
-    <div class="space-y-12">
-      <section
-        v-for="(category, index) in filteredCategories"
-        :key="category.title"
-        :id="`category-${index}`"
-        class="scroll-mt-32"
-      >
-        <div class="flex items-center gap-3 mb-5 border-b-[3px] border-black dark:border-white pb-3">
-          <span class="font-mono text-sm font-bold px-2 py-1 bg-black text-white dark:bg-white dark:text-black">
-            {{ String(index + 1).padStart(2, '0') }}
-          </span>
-          <h2 class="text-xl font-bold tracking-tight font-grotesk uppercase">
-            {{ category.title }}
-          </h2>
-          <span class="ml-auto text-xs font-mono text-gray-500 dark:text-gray-400">
-            {{ category.items.length }} ITEMS
-          </span>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <NavCard
-            v-for="item in category.items"
-            :key="item.link"
-            v-bind="item"
-          />
-        </div>
-      </section>
-
-      <!-- 搜索无结果提示 -->
-      <div
-        v-if="filteredCategories.length === 0 && searchStore.searchQuery"
-        class="text-center py-20 border-[3px] border-dashed border-black dark:border-white"
-      >
-        <p class="text-5xl mb-4 font-grotesk">404</p>
-        <p class="text-lg font-bold">没有找到「{{ searchStore.searchQuery }}」</p>
-        <p class="text-sm mt-2 text-gray-500 dark:text-gray-400">试试别的关键词，或者清空搜索</p>
+    <div v-for="(cat, i) in visibleCategories" :key="cat.id" :id="`cat-${cat.id}`" class="mb-10 scroll-mt-32">
+      <div class="flex items-baseline gap-3 mb-5">
+        <span class="font-grotesk font-mono text-sm text-primary-700 dark:text-primary-400">{{ pad2(i + 1) }}</span>
+        <h2 class="font-grotesk text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ cat.title }}</h2>
+        <span class="text-xs text-gray-400 dark:text-gray-500 font-mono">{{ cat.links.length }}</span>
+        <div class="flex-1 h-px bg-gray-300 dark:bg-gray-600"></div>
       </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <NavCard v-for="link in cat.links" :key="link.title" :link="link" />
+      </div>
+    </div>
+
+    <!-- 搜索无结果 -->
+    <div v-if="visibleCategories.length === 0" class="text-center py-16 text-gray-500 dark:text-gray-400 font-grotesk">
+      <p class="text-3xl mb-3">🧭</p>
+      <p>没有找到「{{ searchStore.searchText }}」相关的内容</p>
+      <p class="text-sm mt-2 opacity-70">试试换个关键词，或清除搜索</p>
     </div>
   </div>
 </template>
 
 <script setup>
 import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
-import { useSearchStore } from '../stores/search'
+import { useSearchStore } from '../stores/search.js'
 import NavCard from './NavCard.vue'
-import { navigationData } from '../data/navigation'
 
 const searchStore = useSearchStore()
-const activeIndex = ref(0)
 
-const matchesSearch = (item) => {
-  const query = searchStore.searchQuery.toLowerCase()
-  if (!query) return true
+const pad2 = (n) => String(n).padStart(2, '0')
 
-  return (
-    item.title.toLowerCase().includes(query) ||
-    (item.description || '').toLowerCase().includes(query)
-  )
+// 过滤后的分类（保留原始顺序，id 与原始分类一致）
+const visibleCategories = computed(() =>
+  searchStore.filteredCategories.map((c) => ({ id: c.id, title: c.title, links: c.links }))
+)
+
+// 当前滚动到的分类（用于页签高亮）
+const activeCategory = ref('')
+
+const sectionMap = new Map()
+
+const onScroll = () => {
+  if (sectionMap.size === 0) return
+  const headerH = 64
+  let current = ''
+  for (const [id, el] of sectionMap) {
+    if (el.getBoundingClientRect().top - headerH <= 48) {
+      current = id
+    }
+  }
+  activeCategory.value = current
 }
 
-const filteredCategories = computed(() => {
-  if (!searchStore.searchQuery) return navigationData
-
-  return navigationData.map(category => ({
-    ...category,
-    items: category.items.filter(matchesSearch)
-  })).filter(category => category.items.length > 0)
-})
-
-const scrollToCategory = (index) => {
-  const el = document.getElementById(`category-${index}`)
+const scrollToCategory = (id) => {
+  const el = sectionMap.get(id)
   if (el) {
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
+  activeCategory.value = id
 }
 
-// 滚动时高亮当前可见的分类页签
-const onScroll = () => {
-  let current = 0
-  navigationData.forEach((_, index) => {
-    const el = document.getElementById(`category-${index}`)
-    if (el) {
-      const rect = el.getBoundingClientRect()
-      if (rect.top <= 160) {
-        current = index
-      }
-    }
+const collectSections = () => {
+  sectionMap.clear()
+  visibleCategories.value.forEach((c) => {
+    const el = document.getElementById(`cat-${c.id}`)
+    if (el) sectionMap.set(c.id, el)
   })
-  activeIndex.value = current
 }
 
 onMounted(() => {
+  collectSections()
   window.addEventListener('scroll', onScroll, { passive: true })
-  onScroll()
+  // 初始高亮
+  setTimeout(onScroll, 100)
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', onScroll)
 })
 </script>
-
-<style scoped>
-/* 隐藏页签的横向滚动条 */
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-</style>

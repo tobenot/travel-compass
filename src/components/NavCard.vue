@@ -5,61 +5,50 @@
     rel="noopener noreferrer"
     class="group block p-4
            bg-white dark:bg-dark-600
-           border-[3px] border-black dark:border-white
-           shadow-[4px_4px_0_0_#000] dark:shadow-[4px_4px_0_0_#fff]
-           hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px]
-           hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500
-           transition-all duration-100 ease-out"
+           border-2 border-gray-300 dark:border-gray-600
+           shadow-[3px_3px_0_0_rgba(0,0,0,0.12)] dark:shadow-[3px_3px_0_0_rgba(255,255,255,0.12)]
+           transition-all duration-100
+           hover:border-gray-500 dark:hover:border-gray-400
+           hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
   >
-    <div class="flex items-center gap-3">
-      <div
-        class="shrink-0 w-11 h-11
-               bg-black/5 dark:bg-white/10
-               border-2 border-black/80 dark:border-white/60
-               flex items-center justify-center
-               transition-all duration-100 group-hover:bg-white group-hover:border-white group-hover:text-black"
-      >
-        <template v-if="icon">
-          <span class="text-xl leading-none">{{ icon }}</span>
-        </template>
-        <template v-else>
-          <img
-            :src="`https://www.google.com/s2/favicons?domain=${encodeURIComponent(link)}&sz=128`"
-            :alt="title"
-            class="w-6 h-6 object-contain"
-            loading="lazy"
-            @error="handleImageError"
-          />
-        </template>
+    <div class="flex items-start gap-3">
+      <!-- 图标：emoji 或 Google favicon -->
+      <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center
+                  border-2 border-gray-200 dark:border-gray-600
+                  bg-gray-50 dark:bg-dark-500
+                  transition-colors duration-100
+                  group-hover:border-primary-600 group-hover:bg-primary-50 dark:group-hover:bg-primary-900/30">
+        <img
+          v-if="!link.icon"
+          :src="`https://www.google.com/s2/favicons?domain=${new URL(link.link).hostname}&sz=64`"
+          :alt="link.title"
+          class="w-6 h-6"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+        />
+        <span v-else class="text-xl leading-none">{{ link.icon }}</span>
       </div>
-      <div class="min-w-0 flex-1">
-        <h3 class="font-bold text-[15px] leading-snug truncate font-grotesk">
-          {{ title }}
+
+      <div class="flex-1 min-w-0">
+        <h3 class="font-grotesk font-semibold text-sm text-gray-900 dark:text-white truncate
+                   group-hover:text-primary-700 dark:group-hover:text-primary-300">
+          {{ link.title }}
         </h3>
-        <p v-if="description" class="text-[13px] text-gray-500 dark:text-gray-400 line-clamp-2 mt-0.5 group-hover:text-white/80">
-          {{ description }}
-        </p>
+        <p class="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 mt-0.5">{{ link.description }}</p>
       </div>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="w-4 h-4 shrink-0 text-black dark:text-white group-hover:text-black"
-        fill="none" viewBox="0 0 24 24" stroke="currentColor"
-      >
-        <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-      </svg>
+
+      <span class="opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 mt-1 flex-shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </span>
     </div>
   </a>
 </template>
 
 <script setup>
-const props = defineProps({
-  title: String,
-  description: String,
-  link: String,
-  icon: String,
-});
-
-const handleImageError = (e) => {
-  e.target.style.display = 'none';
-};
+defineProps({
+  link: { type: Object, required: true }
+})
 </script>

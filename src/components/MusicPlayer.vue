@@ -1,9 +1,9 @@
 <template>
   <div 
     class="w-full max-w-sm bg-white dark:bg-dark-600
-           border-[3px] border-black dark:border-white
-           shadow-[4px_4px_0_0_#000] dark:shadow-[4px_4px_0_0_#fff]
-           transition-all duration-100 p-3"
+           border-2 border-gray-300 dark:border-gray-600
+           shadow-[3px_3px_0_0_rgba(0,0,0,0.12)] dark:shadow-[3px_3px_0_0_rgba(255,255,255,0.12)]
+           transition-all duration-100 p-3">
   >
     <!-- 完整模式 -->
     <div class="space-y-3">
@@ -16,7 +16,7 @@
 
       <!-- 封面和播放进度 -->
       <div class="relative">
-        <img :src="currentSong.cover" alt="Album Cover" class="w-full h-40 object-cover border-2 border-black/80 dark:border-white/60" />
+        <img :src="currentSong.cover" alt="Album Cover" class="w-full h-40 object-cover border-2 border-gray-300 dark:border-gray-600" />
         <div class="absolute bottom-0 left-0 right-0 bg-black/70 p-2">
           <p class="text-white text-xs font-medium">{{ currentSong.artist }}</p>
         </div>
