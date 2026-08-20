@@ -154,8 +154,8 @@ export const navigationData = [
     items: [
       {
         title: '腾讯云服务器控制台',
-        description: '腾讯云 CVM 管理',
-        link: 'https://console.cloud.tencent.com/',
+        description: '腾讯云轻量服务器管理',
+        link: 'https://console.cloud.tencent.com/lighthouse/instance/',
         icon: '☁️'
       },
       {
