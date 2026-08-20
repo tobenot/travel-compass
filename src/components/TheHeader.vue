@@ -31,25 +31,41 @@
               @input="handleSearch"
             />
 
-            <div class="flex items-stretch">
+            <div class="flex items-stretch gap-0">
               <button
                 @click="handleGoogleSearch"
-                class="flex items-center px-3 md:px-4 text-sm font-bold font-grotesk
+                title="用 Google 搜索"
+                class="flex items-center justify-center px-3 md:px-4
                        border-l-2 border-gray-300 dark:border-gray-600
-                       bg-gray-800 text-white dark:bg-gray-200 dark:text-gray-900
+                       bg-white dark:bg-dark-600
                        transition-all duration-100
-                       hover:bg-gray-600 dark:hover:bg-white"
+                       hover:bg-gray-100 dark:hover:bg-dark-500"
               >
-                G
+                <!-- Google "G" 彩色 logo -->
+                <svg class="w-5 h-5" viewBox="0 0 48 48" aria-hidden="true">
+                  <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                  <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                  <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                  <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                </svg>
               </button>
               <button
                 @click="handleBaiduSearch"
-                class="flex items-center px-3 md:px-4 text-sm font-bold font-grotesk
+                title="用百度搜索"
+                class="flex items-center justify-center px-3 md:px-4
                        border-l-2 border-gray-300 dark:border-gray-600
+                       bg-white dark:bg-dark-600
                        transition-all duration-100
-                       hover:bg-gray-800 hover:text-white dark:hover:bg-white dark:hover:text-gray-900"
+                       hover:bg-gray-100 dark:hover:bg-dark-500"
               >
-                B
+                <!-- Baidu "B" 蓝红 logo -->
+                <svg class="w-5 h-5" viewBox="0 0 48 48" aria-hidden="true">
+                  <path fill="#2932E1" d="M38.2 27.8c-2.1 0-3.8 1.7-3.8 3.8s1.7 3.8 3.8 3.8 3.8-1.7 3.8-3.8-1.7-3.8-3.8-3.8z"/>
+                  <path fill="#2932E1" d="M24 4C13.5 4 5 12.5 5 23s8.5 19 19 19c5.5 0 10.4-2.4 13.8-6.1.9-1 1-2.5.1-3.5-1-1-2.5-1-3.5 0C32 29.2 28.3 30.8 24 30.8 15.7 30.8 9 24.1 9 15.8S15.7 4 24 4c3.8 0 7.3 1.4 10 3.7l2.1-2.6C33.2 2.2 28.9 0 24 0z"/>
+                  <path fill="#FB0003" d="M33.6 35.4c.5.6.5 1.5-.1 2.1C29.8 41.3 25 44 19.5 44 12 44 6 38 6 30.5S12 17 19.5 17c3.5 0 6.7 1.3 9.1 3.4l1.8-2.2C27.5 15.6 23.6 14 19.5 14 10.9 14 4 21 4 30.5S10.9 47 19.5 47c6.2 0 11.8-3.1 15.4-7.6.4-.5.3-1.3-.3-1.7-.6-.4-1.4-.3-1.7.3-.1.1-.2.2-.3.4z"/>
+                  <path fill="#FB0003" d="M24 20c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z"/>
+                  <path fill="#FB0003" d="M24 23c-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3-1.3-3-3-3z"/>
+                </svg>
               </button>
             </div>
           </div>
