@@ -153,6 +153,12 @@ export const navigationData = [
     title: '实用工具',
     items: [
       {
+        title: '腾讯云服务器控制台',
+        description: '腾讯云 CVM 管理',
+        link: 'https://console.cloud.tencent.com/',
+        icon: '☁️'
+      },
+      {
         title: '日历',
         description: '百度搜索日历',
         link: 'https://www.baidu.com/s?wd=%E6%97%A5%E5%8E%86',
