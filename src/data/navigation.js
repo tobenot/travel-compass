@@ -181,6 +181,12 @@ export const navigationData = [
         icon: '✈️'
       },
       {
+        title: '【技术交流】Manchester Mechanics\u2019 Institution',
+        description: '飞书云文档 / 萝北来信',
+        link: 'https://my.feishu.cn/drive/folder/AtEgfv5fnlQwIJdKBqnccxJJnZd',
+        icon: '📁'
+      },
+      {
         title: 'Flomo',
         description: '快速记录灵感',
         link: 'https://v.flomoapp.com/mine'
