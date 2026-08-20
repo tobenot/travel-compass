@@ -1,6 +1,6 @@
 <template>
   <a
-    :href="link"
+    :href="link.link"
     target="_blank"
     rel="noopener noreferrer"
     class="group block p-4
@@ -20,14 +20,14 @@
                   transition-colors duration-100
                   group-hover:border-primary-600 group-hover:bg-primary-50 dark:group-hover:bg-primary-900/30">
         <img
-          v-if="!link.icon"
-          :src="`https://www.google.com/s2/favicons?domain=${new URL(link.link).hostname}&sz=64`"
+          v-if="!link.icon && faviconUrl"
+          :src="faviconUrl"
           :alt="link.title"
           class="w-6 h-6"
           loading="lazy"
           referrerpolicy="no-referrer"
         />
-        <span v-else class="text-xl leading-none">{{ link.icon }}</span>
+        <span v-else class="text-xl leading-none">{{ link.icon || '🔗' }}</span>
       </div>
 
       <div class="flex-1 min-w-0">
@@ -35,7 +35,7 @@
                    group-hover:text-primary-700 dark:group-hover:text-primary-300">
           {{ link.title }}
         </h3>
-        <p class="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 mt-0.5">{{ link.description }}</p>
+        <p v-if="link.description" class="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 mt-0.5">{{ link.description }}</p>
       </div>
 
       <span class="opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 mt-1 flex-shrink-0">
@@ -48,7 +48,21 @@
 </template>
 
 <script setup>
-defineProps({
+import { computed } from 'vue'
+
+const props = defineProps({
   link: { type: Object, required: true }
+})
+
+// 防御性计算 favicon URL（避免 new URL() 对空/非法值抛异常）
+const faviconUrl = computed(() => {
+  try {
+    if (!props.link.link) return ''
+    const url = new URL(props.link.link)
+    if (!url.hostname) return ''
+    return `https://www.google.com/s2/favicons?domain=${url.hostname}&sz=64`
+  } catch {
+    return ''
+  }
 })
 </script>
