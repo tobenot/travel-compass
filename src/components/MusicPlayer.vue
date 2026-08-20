@@ -1,13 +1,14 @@
 <template>
   <div 
-    class="w-full max-w-sm bg-white/70 dark:bg-dark-600/80 backdrop-blur-lg 
-           rounded-2xl shadow-lg border border-primary-200 dark:border-primary-900
-           transition-all duration-300 p-3"
+    class="w-full max-w-sm bg-white dark:bg-dark-600
+           border-[3px] border-black dark:border-white
+           shadow-[4px_4px_0_0_#000] dark:shadow-[4px_4px_0_0_#fff]
+           transition-all duration-100 p-3"
   >
     <!-- 完整模式 -->
     <div class="space-y-3">
       <div class="flex items-center justify-between">
-        <h3 class="font-medium text-gray-900 dark:text-white truncate flex-1">{{ currentSong.title }}</h3>
+        <h3 class="font-bold font-grotesk text-gray-900 dark:text-white truncate flex-1">{{ currentSong.title }}</h3>
         <div class="flex items-center space-x-1">
           <!-- 最小化按钮 -->
         </div>
@@ -15,49 +16,49 @@
 
       <!-- 封面和播放进度 -->
       <div class="relative">
-        <img :src="currentSong.cover" alt="Album Cover" class="w-full h-40 object-cover rounded-lg shadow-md" />
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-2 rounded-b-lg">
+        <img :src="currentSong.cover" alt="Album Cover" class="w-full h-40 object-cover border-2 border-black/80 dark:border-white/60" />
+        <div class="absolute bottom-0 left-0 right-0 bg-black/70 p-2">
           <p class="text-white text-xs font-medium">{{ currentSong.artist }}</p>
         </div>
       </div>
 
       <!-- 进度条 -->
       <div class="space-y-1">
-        <div class="h-1.5 bg-gray-200 dark:bg-dark-400 rounded-full overflow-hidden">
-          <div class="h-full bg-primary-500 rounded-full" :style="`width: ${progress}%`"></div>
+        <div class="h-2 bg-gray-200 dark:bg-dark-400 overflow-hidden">
+          <div class="h-full bg-black dark:bg-white" :style="`width: ${progress}%`"></div>
         </div>
-        <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400">
+        <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 font-mono">
           <span>{{ formatTime(currentTime) }}</span>
           <span>{{ formatTime(duration) }}</span>
         </div>
       </div>
 
       <!-- 控制按钮 -->
-      <div class="flex justify-center items-center space-x-4">
-        <button @click="prev" class="p-2 text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400">
+      <div class="flex justify-center items-center space-x-3">
+        <button @click="prev" class="p-2 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white border-2 border-transparent hover:border-black dark:hover:border-white transition-all duration-100">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <button @click="togglePlay" class="p-3 bg-primary-500 hover:bg-primary-600 text-white rounded-full shadow-md hover:shadow-lg">
+        <button @click="togglePlay" class="p-3 bg-black text-white dark:bg-white dark:text-black border-2 border-black dark:border-white hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-100">
           <svg v-if="isPlaying" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </button>
-        <button @click="next" class="p-2 text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400">
+        <button @click="next" class="p-2 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white border-2 border-transparent hover:border-black dark:hover:border-white transition-all duration-100">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>
       
       <!-- 音量控制 -->
       <div class="flex items-center space-x-2 mt-1">
-        <button @click="toggleMute" class="p-1 text-gray-600 dark:text-gray-400">
+        <button @click="toggleMute" class="p-1 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
           <svg v-if="isMuted" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd" />
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
@@ -252,21 +253,34 @@ onUnmounted(() => {
 </script>
 
 <style>
-/* 自定义滑块样式 */
+/* 自定义滑块样式（粗野风：方形滑块） */
+input[type=range] {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  height: 8px;
+  background: #e5e7eb;
+}
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
-  background: #8b5cf6;
+  height: 14px;
+  width: 14px;
+  border-radius: 0;
+  background: #000;
   cursor: pointer;
+  margin-top: -3px;
 }
-
+input[type=range]::-moz-range-track {
+  height: 8px;
+  background: #e5e7eb;
+}
 input[type=range]::-moz-range-thumb {
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
-  background: #8b5cf6;
+  height: 14px;
+  width: 14px;
+  border-radius: 0;
+  background: #000;
   cursor: pointer;
   border: none;
 }

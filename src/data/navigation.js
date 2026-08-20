@@ -80,7 +80,7 @@ export const navigationData = [
     ]
   },
   {
-    title: 'AI购买盯梢',
+    title: 'AI 套餐监控',
     items: [
       {
         title: '阿里云 Coding Plan',

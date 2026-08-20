@@ -24,6 +24,13 @@ body {
   }
 }
 
+@layer utilities {
+  /* Control 式标题字体：Space Grotesk（拉丁）+ 系统黑体（CJK） */
+  .font-grotesk {
+    font-family: 'Space Grotesk', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  }
+}
+
 @layer components {
   .btn {
     @apply px-4 py-2 rounded-lg font-medium transition-colors;

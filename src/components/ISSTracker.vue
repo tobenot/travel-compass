@@ -1,15 +1,13 @@
 <template>
-  <div class="w-full max-w-sm p-5 bg-gradient-to-br from-white/95 to-blue-50/95 dark:from-slate-800/95 dark:to-blue-900/95 
-              rounded-2xl backdrop-blur-md
-              border border-blue-200 dark:border-blue-500/30
-              shadow-[0_0_30px_rgba(59,130,246,0.2)]
-              dark:shadow-[0_0_30px_rgba(59,130,246,0.15)]
-              overflow-hidden">
+  <div class="w-full max-w-sm p-5 bg-white dark:bg-slate-900
+              border-[3px] border-black dark:border-white
+              shadow-[4px_4px_0_0_#000] dark:shadow-[4px_4px_0_0_#fff]
+              relative overflow-hidden">
     
-    <!-- 装饰性舱窗 -->
-    <div class="absolute -right-4 -top-4 w-16 h-16 bg-blue-500/10 rounded-full blur-md"></div>
-    <div class="absolute right-8 top-8 w-3 h-3 bg-blue-400/30 rounded-full"></div>
-    <div class="absolute right-12 top-6 w-2 h-2 bg-blue-400/20 rounded-full"></div>
+    <!-- 装饰性舱窗（保留超自然点缀，改直角） -->
+    <div class="absolute -right-4 -top-4 w-16 h-16 bg-blue-500/10 blur-md"></div>
+    <div class="absolute right-8 top-8 w-3 h-3 bg-blue-400/30"></div>
+    <div class="absolute right-12 top-6 w-2 h-2 bg-blue-400/20"></div>
     
     <!-- 飞船舱门装饰线 -->
     <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-blue-500/0 via-blue-500/20 to-blue-500/0"></div>
@@ -19,9 +17,9 @@
         <div class="relative">
           <span class="text-2xl">🛸</span>
           <!-- 脉冲指示灯 -->
-          <div class="absolute -right-1 -bottom-1 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+          <div class="absolute -right-1 -bottom-1 w-2 h-2 bg-blue-400 animate-pulse"></div>
         </div>
-        <h3 class="text-lg font-medium text-gray-800 dark:text-blue-50">国际空间站位置</h3>
+        <h3 class="text-lg font-bold font-grotesk text-gray-900 dark:text-blue-50">国际空间站位置</h3>
       </div>
       
       <!-- 最小化按钮 REMOVED -->
@@ -29,8 +27,8 @@
     
     <div v-if="issData" class="space-y-2 relative">
       <!-- 数据显示面板 -->
-      <div class="space-y-2 bg-white/50 dark:bg-slate-900/50 rounded-lg p-3 
-                  border border-blue-100 dark:border-blue-500/20">
+      <div class="space-y-2 bg-gray-50 dark:bg-slate-800 p-3
+                  border-2 border-black/80 dark:border-white/60">
         <p class="text-sm text-gray-600 dark:text-blue-100/90 flex justify-between">
           <span class="font-medium">纬度:</span>
           <span class="font-mono">{{ issData.latitude.toFixed(2) }}°</span>
@@ -59,7 +57,7 @@
       </p>
       
       <!-- 新增：链接默认显示 -->
-      <div class="mt-2 p-2 bg-white/50 dark:bg-slate-900/50 rounded-lg border border-blue-100 dark:border-blue-500/20">
+      <div class="mt-2 p-2 bg-gray-50 dark:bg-slate-800 border-2 border-black/80 dark:border-white/60">
         <ul class="space-y-1">
           <li>
             <a href="https://www.youtube.com/watch?v=OCem0E-0Q6Y" target="_blank" class="text-blue-500 hover:underline">

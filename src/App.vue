@@ -1,13 +1,24 @@
 <template>
 	<div class="min-h-screen flex flex-col relative">
-		<!-- 背景图层 -->
+		<!-- 背景图层：海洋（超自然基底）+ 细网格叠层（秩序） -->
 		<div class="fixed inset-0 z-0">
-			<img 
-				src="/images/sea.png" 
-				alt="" 
-				class="w-full h-full object-cover opacity-70 dark:opacity-40"
+			<img
+				src="/images/sea.png"
+				alt=""
+				class="w-full h-full object-cover opacity-60 dark:opacity-40"
 			/>
-			<div class="absolute inset-0 bg-white/40 dark:bg-dark-900/60 backdrop-blur-[2px]"></div>
+			<!-- 压暗层：让上面的黑边硬阴影更清晰 -->
+			<div class="absolute inset-0 bg-gray-50/50 dark:bg-dark-900/70"></div>
+			<!-- 细网格：Control 式的机构秩序感 -->
+			<div class="absolute inset-0
+				[background-image:linear-gradient(rgba(0,0,0,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.06)_1px,transparent_1px)]
+				dark:[background-image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)]
+				[background-size:32px_32px]"></div>
+			<!-- 超自然辉光：海面上单点冷色光，克制 -->
+			<div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2
+				w-[600px] h-[400px] rounded-full
+				bg-primary-500/10 dark:bg-primary-500/15
+				blur-3xl"></div>
 		</div>
 
 		<!-- 主要内容 -->
