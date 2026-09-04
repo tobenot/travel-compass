@@ -73,6 +73,11 @@ export const navigationData = [
         link: 'https://opencode.ai/zh/go'
       },
       {
+        title: 'Codex Radar',
+        description: 'AI雷达 - Codex/DSH/ZCode/Grok 限额与重置监控',
+        link: 'https://codexradar.com/'
+      },
+      {
         title: '火山方舟',
         description: '字节火山方舟模型订阅管理',
         link: 'https://console.volcengine.com/ark/region:ark+cn-beijing/openManagement?LLM=%7B%7D&advancedActiveKey=subscribe'
