@@ -81,6 +81,11 @@ export const navigationData = [
         title: '火山方舟',
         description: '字节火山方舟模型订阅管理',
         link: 'https://console.volcengine.com/ark/region:ark+cn-beijing/openManagement?LLM=%7B%7D&advancedActiveKey=subscribe'
+      },
+      {
+        title: '阿里云百炼',
+        description: '阿里云百炼 AI 控制台',
+        link: 'https://bailian.console.aliyun.com/'
       }
     ]
   },
